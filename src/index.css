@@ -1,0 +1,256 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@300;400;500;600;700&display=swap');
+
+:root {
+  --bg-dark: #030014;
+  --bg-card: rgba(255, 255, 255, 0.05);
+  --primary-gradient: linear-gradient(90deg, #8b5cf6 0%, #ec4899 100%);
+  --secondary-gradient: linear-gradient(135deg, #2A2A68 0%, #1a1a40 100%);
+  --text-primary: #ffffff;
+  --text-secondary: #94a3b8;
+  --accent-color: #ec4899;
+  --glass-border: rgba(255, 255, 255, 0.1);
+  --glass-highlight: rgba(255, 255, 255, 0.05);
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 80px;
+}
+
+body {
+  margin: 0;
+  font-family: 'Outfit', sans-serif;
+  background-color: var(--bg-dark);
+  color: var(--text-primary);
+  overflow-x: hidden;
+  background-image: 
+    radial-gradient(circle at 15% 50%, rgba(76, 29, 149, 0.15) 0%, transparent 25%),
+    radial-gradient(circle at 85% 30%, rgba(236, 72, 153, 0.15) 0%, transparent 25%);
+  background-attachment: fixed;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 700;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-dark);
+}
+
+::-webkit-scrollbar-thumb {
+  background: #4c1d95;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #ec4899;
+}
+
+/* Utilities */
+.text-gradient {
+  background: var(--primary-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.glass-card {
+  background: rgba(17, 25, 40, 0.75);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid var(--glass-border);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+}
+
+.glass-nav {
+  background: rgba(3, 0, 20, 0.7);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--glass-border);
+}
+
+.btn-glow {
+  position: relative;
+  background: transparent;
+  color: white;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  padding: 12px 30px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  overflow: hidden;
+  transition: 0.3s;
+  z-index: 1;
+}
+
+.btn-glow::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0%;
+  height: 100%;
+  background: var(--primary-gradient);
+  z-index: -1;
+  transition: 0.3s;
+}
+
+.btn-glow:hover::before {
+  width: 100%;
+}
+
+/* Project Hover Effects */
+.group:hover .project-overlay {
+  opacity: 1 !important;
+}
+
+.group:hover .project-image {
+  transform: scale(1.1) !important;
+}
+
+/* Preloader */
+.preloader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #030014;
+  z-index: 9999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+/* Mobile Optimizations */
+@media (max-width: 576px) {
+  .blob {
+    opacity: 0.5;
+    transform: scale(0.7);
+  }
+  
+  .section-title h2 {
+    font-size: 2rem;
+  }
+  
+  .glass-card {
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+  }
+  
+  .btn-glow {
+    padding: 10px 20px;
+    font-size: 14px;
+    width: 100%;
+  }
+
+  /* Adjust Mobile Nav for small screens */
+  .mobile-nav-container {
+    padding: 10px 15px 20px 15px;
+  }
+  
+  .mobile-nav-icon {
+    padding: 8px 12px; /* Reduce padding to fit 5 items */
+  }
+  
+  .mobile-nav-label {
+    font-size: 10px;
+  }
+}
+
+/* Touch Device Optimizations */
+@media (hover: none) {
+  .project-overlay {
+    opacity: 1 !important;
+    background: rgba(3, 0, 20, 0.3) !important;
+  }
+}
+
+/* Mobile Nav Styles - Modern Full Width App Bar */
+.mobile-nav-container {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background: rgba(3, 0, 20, 0.95);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 -5px 20px rgba(0, 0, 0, 0.3);
+  z-index: 1000;
+  padding: 12px 30px 25px 30px; /* Adjusted padding for better spacing */
+  display: flex;
+  justify-content: space-between; /* Changed to space-between for start-to-end span */
+  align-items: flex-end;
+}
+
+::selection {
+  background: #ec4899;
+  color: white;
+}
+
+.mobile-nav-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: #94a3b8;
+  transition: all 0.3s ease;
+  flex: 1;
+  position: relative;
+  background: transparent;
+  border: none;
+  padding: 0;
+}
+
+.mobile-nav-item.active {
+  color: #ffffff;
+}
+
+.mobile-nav-icon {
+  padding: 8px 20px;
+  border-radius: 20px;
+  margin-bottom: 4px;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  background: transparent;
+  color: inherit;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.mobile-nav-item.active .mobile-nav-icon {
+  transform: translateY(-5px);
+  background: linear-gradient(135deg, #8b5cf6 0%, #ec4899 100%);
+  box-shadow: 0 4px 15px rgba(236, 72, 153, 0.4);
+  color: white;
+}
+
+.mobile-nav-label {
+  font-size: 11px;
+  font-weight: 500;
+  opacity: 0.7;
+  transition: all 0.3s ease;
+}
+
+.mobile-nav-item.active .mobile-nav-label {
+  opacity: 1;
+  font-weight: 600;
+  color: #ec4899;
+}
+
+/* Custom Input Placeholders */
+.custom-placeholder::placeholder {
+  color: rgba(255, 255, 255, 0.8) !important;
+  opacity: 1;
+}
+
+.custom-placeholder:focus::placeholder {
+  color: rgba(255, 255, 255, 0.5) !important;
+}
