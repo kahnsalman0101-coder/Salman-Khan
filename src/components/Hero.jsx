@@ -94,7 +94,7 @@ const Hero = () => {
                    alt="Salman Khan"
                    onError={(e) => {
                      e.target.onerror = null; 
-                     e.target.src = "https://placehold.co/400x400/030014/ffffff?text=Add+profile.png";
+                     e.target.src = "/public/img/IMG_0016.JPG";
                    }}
                    style={{
                      width: '100%',
